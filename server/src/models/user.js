@@ -10,11 +10,17 @@ const User = connection.define('User', {
     email: {
         type: DataTypes.STRING(80),
         allowNull: false,
-        unique: true
+        unique: true,
+        validate: {
+            isEmail: true,
+        }
     },
     password: {
-        type: DataTypes.STRING, 
-        allowNull: false
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [8, 255],
+        }
     }
 }, {
     timestamps: false
